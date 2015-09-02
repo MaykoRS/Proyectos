@@ -1,18 +1,24 @@
+
+
 import java.awt.EventQueue;
-import java.awt.Image;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JButton;
-import javax.swing.JTextArea;
 import javax.swing.JLabel;
-
+import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Font;
 
 public class GUI {
 
 	private JFrame frame;
 	private JLabel lbl;
+	private JTextArea textArea;
+	private JButton btn;
 
 	/**
 	 * Launch the application.
@@ -40,29 +46,40 @@ public class GUI {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize()
+	{
 		frame = new JFrame();
+		frame.getContentPane().setBackground(Color.GREEN);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		btn = new JButton("Presionar");
+		btn.setBounds(137, 227, 141, 31);
+		btn.addActionListener(new ActionListener() {
+			
+			
+			public void actionPerformed(ActionEvent arg0) {
+				textArea.setText("'Para mentir se necesitan dos, uno que mienta y otro que crea'");
+			}
+		});
 		frame.getContentPane().setLayout(null);
+		frame.getContentPane().add(btn);
 		
-		JButton btn1 = new JButton("Presionar");
-		btn1.setBounds(150, 230, 126, 23);
-		frame.getContentPane().add(btn1);
+		lbl = new JLabel("");
+		lbl.setBounds(24, 30, 170, 177);
+		ImageIcon img = new ImageIcon("src/homero.gif");
+		Icon icono = new ImageIcon(img.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), img.getIconWidth()));
+		lbl.setIcon(icono);
+		frame.getContentPane().add(lbl);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setWrapStyleWord(true);
+		textArea = new JTextArea();
+		textArea.setForeground(Color.BLUE);
+		textArea.setFont(new Font("Comic Sans MS", Font.ITALIC, 17));
+		textArea.setBackground(new Color(255, 255, 255));
+		textArea.setBounds(254, 30, 162, 177);
 		textArea.setEditable(false);
 		textArea.setLineWrap(true);
-		textArea.setBounds(253, 31, 151, 170);
+		textArea.setWrapStyleWord(true);
 		frame.getContentPane().add(textArea);
-		
-		Icon img = new ImageIcon("src/homero.gif");
-		
-		lbl = new JLabel(img);
-		
-		lbl.setBounds(22, 31, 144, 170);
-		
-		frame.getContentPane().add(lbl);
 	}
 }
