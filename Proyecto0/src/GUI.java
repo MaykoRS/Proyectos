@@ -67,7 +67,7 @@ public class GUI {
 		
 		lbl = new JLabel("");
 		lbl.setBounds(24, 30, 170, 177);
-		ImageIcon img = new ImageIcon("src/homero.gif");
+		ImageIcon img = new ImageIcon(GUI.class.getResource("/img/homero.gif"));
 		Icon icono = new ImageIcon(img.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), img.getIconWidth()));
 		lbl.setIcon(icono);
 		frame.getContentPane().add(lbl);
